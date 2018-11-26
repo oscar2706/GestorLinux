@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/File.h
+string.h
+-
+iostream
+-
+
+/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/Folder.h
+File.h
+/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/File.h
+string.h
+-
+list
+-
+iostream
+-
+
+/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/main.cpp
+iostream
+-
+Folder.h
+/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/Folder.h
+

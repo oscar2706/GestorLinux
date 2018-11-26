@@ -1,0 +1,3 @@
+/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/CMakeFiles/Proyecto3Linux.dir

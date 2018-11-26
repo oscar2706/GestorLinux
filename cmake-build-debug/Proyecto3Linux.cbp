@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Proyecto3Linux"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Proyecto3Linux">
+				<Option output="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Proyecto3Linux" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 Proyecto3Linux"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Proyecto3Linux/fast">
+				<Option output="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Proyecto3Linux" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 Proyecto3Linux/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/File.cpp">
+			<Option target="Proyecto3Linux"/>
+		</Unit>
+		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/File.h">
+			<Option target="Proyecto3Linux"/>
+		</Unit>
+		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/Folder.cpp">
+			<Option target="Proyecto3Linux"/>
+		</Unit>
+		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/Folder.h">
+			<Option target="Proyecto3Linux"/>
+		</Unit>
+		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/HardDrive.cpp">
+			<Option target="Proyecto3Linux"/>
+		</Unit>
+		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/HardDrive.h">
+			<Option target="Proyecto3Linux"/>
+		</Unit>
+		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/Permission.cpp">
+			<Option target="Proyecto3Linux"/>
+		</Unit>
+		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/Permission.h">
+			<Option target="Proyecto3Linux"/>
+		</Unit>
+		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/PermissionsFile.cpp">
+			<Option target="Proyecto3Linux"/>
+		</Unit>
+		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/PermissionsFile.h">
+			<Option target="Proyecto3Linux"/>
+		</Unit>
+		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/User.cpp">
+			<Option target="Proyecto3Linux"/>
+		</Unit>
+		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/User.h">
+			<Option target="Proyecto3Linux"/>
+		</Unit>
+		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/main.cpp">
+			<Option target="Proyecto3Linux"/>
+		</Unit>
+		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
