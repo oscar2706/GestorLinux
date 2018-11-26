@@ -109,18 +109,18 @@ CMakeFiles/Proyecto3Linux.dir/User.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Proyecto3Linux.dir/User.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/User.cpp -o CMakeFiles/Proyecto3Linux.dir/User.cpp.s
 
-CMakeFiles/Proyecto3Linux.dir/PermissionsFile.cpp.o: CMakeFiles/Proyecto3Linux.dir/flags.make
-CMakeFiles/Proyecto3Linux.dir/PermissionsFile.cpp.o: ../PermissionsFile.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Proyecto3Linux.dir/PermissionsFile.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Proyecto3Linux.dir/PermissionsFile.cpp.o -c /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/PermissionsFile.cpp
+CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.o: CMakeFiles/Proyecto3Linux.dir/flags.make
+CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.o: ../HardDrive.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.o -c /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/HardDrive.cpp
 
-CMakeFiles/Proyecto3Linux.dir/PermissionsFile.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Proyecto3Linux.dir/PermissionsFile.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/PermissionsFile.cpp > CMakeFiles/Proyecto3Linux.dir/PermissionsFile.cpp.i
+CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/HardDrive.cpp > CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.i
 
-CMakeFiles/Proyecto3Linux.dir/PermissionsFile.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Proyecto3Linux.dir/PermissionsFile.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/PermissionsFile.cpp -o CMakeFiles/Proyecto3Linux.dir/PermissionsFile.cpp.s
+CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/HardDrive.cpp -o CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.s
 
 CMakeFiles/Proyecto3Linux.dir/Permission.cpp.o: CMakeFiles/Proyecto3Linux.dir/flags.make
 CMakeFiles/Proyecto3Linux.dir/Permission.cpp.o: ../Permission.cpp
@@ -135,18 +135,18 @@ CMakeFiles/Proyecto3Linux.dir/Permission.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Proyecto3Linux.dir/Permission.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/Permission.cpp -o CMakeFiles/Proyecto3Linux.dir/Permission.cpp.s
 
-CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.o: CMakeFiles/Proyecto3Linux.dir/flags.make
-CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.o: ../HardDrive.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.o -c /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/HardDrive.cpp
+CMakeFiles/Proyecto3Linux.dir/PermissionFile.cpp.o: CMakeFiles/Proyecto3Linux.dir/flags.make
+CMakeFiles/Proyecto3Linux.dir/PermissionFile.cpp.o: ../PermissionFile.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Proyecto3Linux.dir/PermissionFile.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Proyecto3Linux.dir/PermissionFile.cpp.o -c /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/PermissionFile.cpp
 
-CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/HardDrive.cpp > CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.i
+CMakeFiles/Proyecto3Linux.dir/PermissionFile.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Proyecto3Linux.dir/PermissionFile.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/PermissionFile.cpp > CMakeFiles/Proyecto3Linux.dir/PermissionFile.cpp.i
 
-CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/HardDrive.cpp -o CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.s
+CMakeFiles/Proyecto3Linux.dir/PermissionFile.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Proyecto3Linux.dir/PermissionFile.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/PermissionFile.cpp -o CMakeFiles/Proyecto3Linux.dir/PermissionFile.cpp.s
 
 # Object files for target Proyecto3Linux
 Proyecto3Linux_OBJECTS = \
@@ -154,9 +154,9 @@ Proyecto3Linux_OBJECTS = \
 "CMakeFiles/Proyecto3Linux.dir/Folder.cpp.o" \
 "CMakeFiles/Proyecto3Linux.dir/File.cpp.o" \
 "CMakeFiles/Proyecto3Linux.dir/User.cpp.o" \
-"CMakeFiles/Proyecto3Linux.dir/PermissionsFile.cpp.o" \
+"CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.o" \
 "CMakeFiles/Proyecto3Linux.dir/Permission.cpp.o" \
-"CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.o"
+"CMakeFiles/Proyecto3Linux.dir/PermissionFile.cpp.o"
 
 # External object files for target Proyecto3Linux
 Proyecto3Linux_EXTERNAL_OBJECTS =
@@ -165,9 +165,9 @@ Proyecto3Linux: CMakeFiles/Proyecto3Linux.dir/main.cpp.o
 Proyecto3Linux: CMakeFiles/Proyecto3Linux.dir/Folder.cpp.o
 Proyecto3Linux: CMakeFiles/Proyecto3Linux.dir/File.cpp.o
 Proyecto3Linux: CMakeFiles/Proyecto3Linux.dir/User.cpp.o
-Proyecto3Linux: CMakeFiles/Proyecto3Linux.dir/PermissionsFile.cpp.o
-Proyecto3Linux: CMakeFiles/Proyecto3Linux.dir/Permission.cpp.o
 Proyecto3Linux: CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.o
+Proyecto3Linux: CMakeFiles/Proyecto3Linux.dir/Permission.cpp.o
+Proyecto3Linux: CMakeFiles/Proyecto3Linux.dir/PermissionFile.cpp.o
 Proyecto3Linux: CMakeFiles/Proyecto3Linux.dir/build.make
 Proyecto3Linux: CMakeFiles/Proyecto3Linux.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable Proyecto3Linux"

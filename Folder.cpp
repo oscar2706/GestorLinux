@@ -7,12 +7,29 @@
 Folder::Folder() {
     folderName = "New Folder";
     size = 1;
+    isRootFolder = false;
+    ownerPermissions = Permission();
+    groupPermissions = Permission();
+    othersPermissions = Permission();
 }
 
-Folder::Folder(const string &_folderName, int _size, Folder* _parentFolder) {
+Folder::Folder(const string &_folderName, int _size, Folder* _parentFolder, bool isRoot) {
     folderName = _folderName;
     size = _size;
     parentFolder = _parentFolder;
+    isRootFolder = isRoot;
+    if(isRootFolder) {
+        path = "";
+    }
+    else{
+        string currentPath = parentFolder->path;
+        currentPath.append("/");
+        currentPath.append(folderName);
+        path = currentPath;
+    }
+    ownerPermissions = Permission();
+    groupPermissions = Permission();
+    othersPermissions = Permission();
 }
 
 const string &Folder::getFolderName() const {
@@ -21,7 +38,6 @@ const string &Folder::getFolderName() const {
 
 void Folder::addSubFolder(Folder *subFolder) {
     subFolders.push_back(subFolder);
-    //cout << "Cantidad de subfolders = " << subFolders.size() << endl;
 }
 
 void Folder::setNewName(const string &newFolderName) {
@@ -29,13 +45,12 @@ void Folder::setNewName(const string &newFolderName) {
 }
 
 void Folder::printSubFolders() {
-    cout << "Sub folders de " << folderName << ":\n";
-
+    cout << "Folders:\n";
     if(subFolders.empty())
-        cout << "Sin sub-directorios" << endl;
+        cout << "\tEmpty" << endl;
     else{
         for (itrFolder = subFolders.begin();  itrFolder != subFolders.end(); ++itrFolder) {
-            cout << (*itrFolder)->folderName << endl;
+            cout << "\t" << (*itrFolder)->folderName << endl;
         }
     }
 }
@@ -67,9 +82,61 @@ void Folder::addFile(File *newFile) {
 }
 
 void Folder::printFiles() {
+    cout << "Files:\n";
     for (itrFile = files.begin();  itrFile != files.end(); ++itrFile) {
         (*itrFile)->printFileName();
-        (*itrFile)->printData();
     }
 }
+
+void Folder::printPath() {
+    if(isRootFolder)
+        cout << "/" << endl;
+    else
+        cout << path << endl;
+}
+
+void Folder::printContent() {
+    printPath();
+    printSubFolders();
+    printFiles();
+}
+
+void Folder::setOwnerPermissions(const string &ownerName, bool canRead, bool canWrite, bool canExecute) {
+    if(this->subFolders.empty()){
+        ownerPermissions.setName(ownerName);
+        ownerPermissions.setPermissions(canRead, canWrite, canExecute);
+        for (itrFile = files.begin();  itrFile != files.end(); ++itrFile) {
+            (*itrFile)->setOwnerPermissions(ownerName, canRead, canWrite, canExecute);
+        }
+    }
+    else{
+
+        for (itrFolder = subFolders.begin();  itrFolder != subFolders.end(); ++itrFolder) {
+            (*itrFolder)->ownerPermissions.setName(ownerName);
+            (*itrFolder)->ownerPermissions.setPermissions(canRead, canWrite, canExecute);
+            for (itrFile = files.begin();  itrFile != files.end(); ++itrFile) {
+                (*itrFile)->setOwnerPermissions(ownerName, canRead, canWrite, canExecute);
+            }
+        }
+    }
+    /*
+     TODO Hacer los cambios para todos los archivos y subcarpetas(con sus resperctivos archivos)
+     */
+}
+
+void Folder::setGroupPermissions(const string &groupName, bool canRead, bool canWrite, bool canExecute) {
+    groupPermissions.setName(groupName);
+    groupPermissions.setPermissions(canRead, canWrite, canExecute);
+    /*
+     TODO Hacer los cambios para todos los archivos y subcarpetas(con sus resperctivos archivos)
+     */
+}
+
+void Folder::setOthersPermissions(bool canRead, bool canWrite, bool canExecute) {
+    othersPermissions.setPermissions(canRead, canWrite, canExecute);
+    /*
+     TODO Hacer los cambios para todos los archivos y subcarpetas(con sus resperctivos archivos)
+     */
+}
+
 

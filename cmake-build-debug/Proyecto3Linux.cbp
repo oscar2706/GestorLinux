@@ -106,10 +106,10 @@
 		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/Permission.h">
 			<Option target="Proyecto3Linux"/>
 		</Unit>
-		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/PermissionsFile.cpp">
+		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/PermissionFile.cpp">
 			<Option target="Proyecto3Linux"/>
 		</Unit>
-		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/PermissionsFile.h">
+		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/PermissionFile.h">
 			<Option target="Proyecto3Linux"/>
 		</Unit>
 		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/User.cpp">

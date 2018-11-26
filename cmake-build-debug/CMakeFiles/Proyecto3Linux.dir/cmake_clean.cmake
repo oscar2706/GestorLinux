@@ -3,9 +3,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/Proyecto3Linux.dir/Folder.cpp.o"
   "CMakeFiles/Proyecto3Linux.dir/File.cpp.o"
   "CMakeFiles/Proyecto3Linux.dir/User.cpp.o"
-  "CMakeFiles/Proyecto3Linux.dir/PermissionsFile.cpp.o"
-  "CMakeFiles/Proyecto3Linux.dir/Permission.cpp.o"
   "CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.o"
+  "CMakeFiles/Proyecto3Linux.dir/Permission.cpp.o"
+  "CMakeFiles/Proyecto3Linux.dir/PermissionFile.cpp.o"
   "Proyecto3Linux.pdb"
   "Proyecto3Linux"
 )

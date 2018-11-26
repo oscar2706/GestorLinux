@@ -14,9 +14,10 @@ CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.o
 CMakeFiles/Proyecto3Linux.dir/Permission.cpp.o
  /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/Permission.cpp
  /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/Permission.h
-CMakeFiles/Proyecto3Linux.dir/PermissionsFile.cpp.o
- /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/PermissionsFile.cpp
- /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/PermissionsFile.h
+CMakeFiles/Proyecto3Linux.dir/PermissionFile.cpp.o
+ /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/Permission.h
+ /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/PermissionFile.cpp
+ /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/PermissionFile.h
 CMakeFiles/Proyecto3Linux.dir/User.cpp.o
  /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/File.h
  /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/Folder.h

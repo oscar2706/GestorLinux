@@ -14,8 +14,9 @@ CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.o: ../HardDrive.h
 CMakeFiles/Proyecto3Linux.dir/Permission.cpp.o: ../Permission.cpp
 CMakeFiles/Proyecto3Linux.dir/Permission.cpp.o: ../Permission.h
 
-CMakeFiles/Proyecto3Linux.dir/PermissionsFile.cpp.o: ../PermissionsFile.cpp
-CMakeFiles/Proyecto3Linux.dir/PermissionsFile.cpp.o: ../PermissionsFile.h
+CMakeFiles/Proyecto3Linux.dir/PermissionFile.cpp.o: ../Permission.h
+CMakeFiles/Proyecto3Linux.dir/PermissionFile.cpp.o: ../PermissionFile.cpp
+CMakeFiles/Proyecto3Linux.dir/PermissionFile.cpp.o: ../PermissionFile.h
 
 CMakeFiles/Proyecto3Linux.dir/User.cpp.o: ../File.h
 CMakeFiles/Proyecto3Linux.dir/User.cpp.o: ../Folder.h
