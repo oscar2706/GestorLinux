@@ -231,33 +231,6 @@ Permission.cpp.s:
 	$(MAKE) -f CMakeFiles/Proyecto3Linux.dir/build.make CMakeFiles/Proyecto3Linux.dir/Permission.cpp.s
 .PHONY : Permission.cpp.s
 
-PermissionFile.o: PermissionFile.cpp.o
-
-.PHONY : PermissionFile.o
-
-# target to build an object file
-PermissionFile.cpp.o:
-	$(MAKE) -f CMakeFiles/Proyecto3Linux.dir/build.make CMakeFiles/Proyecto3Linux.dir/PermissionFile.cpp.o
-.PHONY : PermissionFile.cpp.o
-
-PermissionFile.i: PermissionFile.cpp.i
-
-.PHONY : PermissionFile.i
-
-# target to preprocess a source file
-PermissionFile.cpp.i:
-	$(MAKE) -f CMakeFiles/Proyecto3Linux.dir/build.make CMakeFiles/Proyecto3Linux.dir/PermissionFile.cpp.i
-.PHONY : PermissionFile.cpp.i
-
-PermissionFile.s: PermissionFile.cpp.s
-
-.PHONY : PermissionFile.s
-
-# target to generate assembly for a file
-PermissionFile.cpp.s:
-	$(MAKE) -f CMakeFiles/Proyecto3Linux.dir/build.make CMakeFiles/Proyecto3Linux.dir/PermissionFile.cpp.s
-.PHONY : PermissionFile.cpp.s
-
 User.o: User.cpp.o
 
 .PHONY : User.o
@@ -333,9 +306,6 @@ help:
 	@echo "... Permission.o"
 	@echo "... Permission.i"
 	@echo "... Permission.s"
-	@echo "... PermissionFile.o"
-	@echo "... PermissionFile.i"
-	@echo "... PermissionFile.s"
 	@echo "... User.o"
 	@echo "... User.i"
 	@echo "... User.s"

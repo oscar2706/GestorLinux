@@ -60,6 +60,8 @@ int main() {
     directorioActual->addFile(archivoPrueba);
     directorioActual->printContent();
 
+    directorioActual->setOwnerPermissions("Oscar", true, true, true);
+    directorioActual->printPermissions();
 
     delete root;
     delete folderOscar;

@@ -102,6 +102,10 @@ void Folder::printContent() {
 }
 
 void Folder::setOwnerPermissions(const string &ownerName, bool canRead, bool canWrite, bool canExecute) {
+
+    ownerPermissions.setName(ownerName);
+    ownerPermissions.setPermissions(canRead, canWrite, canExecute);
+    /*
     if(this->subFolders.empty()){
         ownerPermissions.setName(ownerName);
         ownerPermissions.setPermissions(canRead, canWrite, canExecute);
@@ -110,7 +114,6 @@ void Folder::setOwnerPermissions(const string &ownerName, bool canRead, bool can
         }
     }
     else{
-
         for (itrFolder = subFolders.begin();  itrFolder != subFolders.end(); ++itrFolder) {
             (*itrFolder)->ownerPermissions.setName(ownerName);
             (*itrFolder)->ownerPermissions.setPermissions(canRead, canWrite, canExecute);
@@ -119,6 +122,8 @@ void Folder::setOwnerPermissions(const string &ownerName, bool canRead, bool can
             }
         }
     }
+
+     */
     /*
      TODO Hacer los cambios para todos los archivos y subcarpetas(con sus resperctivos archivos)
      */
@@ -137,6 +142,12 @@ void Folder::setOthersPermissions(bool canRead, bool canWrite, bool canExecute) 
     /*
      TODO Hacer los cambios para todos los archivos y subcarpetas(con sus resperctivos archivos)
      */
+}
+
+void Folder::printPermissions() {
+    ownerPermissions.printPermission();
+    groupPermissions.printPermission();
+    othersPermissions.printPermission();
 }
 
 

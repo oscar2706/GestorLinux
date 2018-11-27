@@ -27,3 +27,11 @@ void Permission::setPermissions(bool canRead, bool canWrite, bool canExecute) {
     write = canWrite;
     execute = canExecute;
 }
+
+void Permission::printPermission() {
+    cout << name << ": ";
+    cout << "read = " << read << ", ";
+    cout << "write = " << write << ", ";
+    cout << "execute = " << execute << endl;
+
+}

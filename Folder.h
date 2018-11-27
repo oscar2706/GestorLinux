@@ -39,6 +39,7 @@ public:
     void printFiles();
     void printContent();
     void printPath();
+    void printPermissions();
     bool hasSubFolder(const string &searchedFolder);
     Folder* returnSubFolder(const string &searchedFolder);
     Folder* retutnParentFolder();

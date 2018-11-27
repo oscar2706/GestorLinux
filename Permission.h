@@ -6,7 +6,7 @@
 #define PROYECTO3LINUX_PERMISSION_H
 
 #include <string>
-
+#include <iostream>
 using namespace std;
 class Permission {
 private:
@@ -19,6 +19,7 @@ public:
     Permission(string _name, bool canRead, bool canWrite, bool canExecute);
     void setName(const string &_name);
     void setPermissions(bool canRead, bool canWrite, bool canExecute);
+    void printPermission();
 };
 
 

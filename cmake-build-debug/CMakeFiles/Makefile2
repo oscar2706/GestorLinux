@@ -71,7 +71,7 @@ CMAKE_BINARY_DIR = /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos
 CMakeFiles/Proyecto3Linux.dir/all:
 	$(MAKE) -f CMakeFiles/Proyecto3Linux.dir/build.make CMakeFiles/Proyecto3Linux.dir/depend
 	$(MAKE) -f CMakeFiles/Proyecto3Linux.dir/build.make CMakeFiles/Proyecto3Linux.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target Proyecto3Linux"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target Proyecto3Linux"
 .PHONY : CMakeFiles/Proyecto3Linux.dir/all
 
 # Include target in all.
@@ -81,7 +81,7 @@ all: CMakeFiles/Proyecto3Linux.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Proyecto3Linux.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Proyecto3Linux.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/Proyecto3Linux.dir/rule
