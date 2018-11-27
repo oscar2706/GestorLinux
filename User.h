@@ -7,23 +7,29 @@
 
 #include <string.h>
 #include <iostream>
+#include <fstream>
+
 #include "Folder.h"
 using namespace std;
 
 class User {
 private:
-    int userID;
     string userName;
     string group;
     string password;
-    Folder userFolder;
-    bool root;
+    Folder *userFolder;
+    bool rootUser;
 public:
     User(const string &_userName, const string &_group);
+    User(const string &_userName, const string &_password, const string &_group, const string &_userFolderName, const bool &_rootUser);
     bool isRoot();
     bool hasUserFolder();
-    Folder getUserFolder();
+    void setUserFolder(Folder* folder);
+    Folder* getUserFolder();
     string getUserName();
+    string getUserPassword();
+    void printInfo();
+    void save();
 };
 
 

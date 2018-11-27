@@ -204,6 +204,33 @@ HardDrive.cpp.s:
 	$(MAKE) -f CMakeFiles/Proyecto3Linux.dir/build.make CMakeFiles/Proyecto3Linux.dir/HardDrive.cpp.s
 .PHONY : HardDrive.cpp.s
 
+Instruction.o: Instruction.cpp.o
+
+.PHONY : Instruction.o
+
+# target to build an object file
+Instruction.cpp.o:
+	$(MAKE) -f CMakeFiles/Proyecto3Linux.dir/build.make CMakeFiles/Proyecto3Linux.dir/Instruction.cpp.o
+.PHONY : Instruction.cpp.o
+
+Instruction.i: Instruction.cpp.i
+
+.PHONY : Instruction.i
+
+# target to preprocess a source file
+Instruction.cpp.i:
+	$(MAKE) -f CMakeFiles/Proyecto3Linux.dir/build.make CMakeFiles/Proyecto3Linux.dir/Instruction.cpp.i
+.PHONY : Instruction.cpp.i
+
+Instruction.s: Instruction.cpp.s
+
+.PHONY : Instruction.s
+
+# target to generate assembly for a file
+Instruction.cpp.s:
+	$(MAKE) -f CMakeFiles/Proyecto3Linux.dir/build.make CMakeFiles/Proyecto3Linux.dir/Instruction.cpp.s
+.PHONY : Instruction.cpp.s
+
 Permission.o: Permission.cpp.o
 
 .PHONY : Permission.o
@@ -303,6 +330,9 @@ help:
 	@echo "... HardDrive.o"
 	@echo "... HardDrive.i"
 	@echo "... HardDrive.s"
+	@echo "... Instruction.o"
+	@echo "... Instruction.i"
+	@echo "... Instruction.s"
 	@echo "... Permission.o"
 	@echo "... Permission.i"
 	@echo "... Permission.s"

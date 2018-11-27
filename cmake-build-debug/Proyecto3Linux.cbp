@@ -100,6 +100,12 @@
 		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/HardDrive.h">
 			<Option target="Proyecto3Linux"/>
 		</Unit>
+		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/Instruction.cpp">
+			<Option target="Proyecto3Linux"/>
+		</Unit>
+		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/Instruction.h">
+			<Option target="Proyecto3Linux"/>
+		</Unit>
 		<Unit filename="/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/Permission.cpp">
 			<Option target="Proyecto3Linux"/>
 		</Unit>

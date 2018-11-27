@@ -1,28 +1,93 @@
-#include <iostream>
 #include "Folder.h"
+#include "Instruction.h"
+#include "User.h"
+#include <string.h>
+#include <iostream>
+#include <list>
 
 using namespace std;
 
 int main() {
+
+    /*list<User> registeredUsers;
+    list<User>::iterator itrUsrs;
+
+    ifstream lee;
+    lee.open("Usuarios.txt");
+
+    string userName;
+    string password;
+    string group;
+    string folderName;
+    bool rootUser;
+    lee >> userName;
+    lee >> password;
+    lee >> group;
+    lee >> folderName;
+    lee >> rootUser;
+    while (!lee.eof()){
+
+        User readUsear(userName,password,group,folderName,rootUser);
+        registeredUsers.push_back(readUsear);
+
+        lee >> userName;
+        lee >> password;
+        lee >> group;
+        lee >> folderName;
+        lee >> rootUser;
+    }
+
+    bool access = false;
+    string typedName;
+    string userPassword;
+    do{
+        cout << "Type user name";
+        cin >> typedName;
+        for (itrUsrs = registeredUsers.begin(); itrUsrs != registeredUsers.end(); ++itrUsrs)
+            if(itrUsrs->getUserName() == typedName) {
+                do{
+                    cout << "Type password";
+                    cin >> userPassword;
+
+                    if(userPassword == itrUsrs->getUserPassword())
+                        access = true;
+                }while(!access);
+                break;
+            }
+    }while (!access);
+
+    Folder *directorioActual;
+    directorioActual = itrUsrs->getUserFolder();
+
+    Instruction control;
+    string typedCommand;
+    do{
+        cout << itrUsrs->getUserName() << ": ";
+        cin >> typedCommand;
+        control.getCommand(typedCommand);
+        if(control.checkCommand())
+            control.execCommand(directorioActual);
+    }while;*/
+
+
+    //Pruebas
     Folder *root;
     root = new Folder("root",1, nullptr, true);
     Folder *folderOscar;
-    folderOscar = new Folder("Oscar", 1, root, false);
-    Folder *subFolder2;
-    subFolder2 = new Folder("Ana", 1, root, false);
+    folderOscar = new Folder("LeoBebe", 1, root, false);
+    Folder *folderAna;
+    folderAna = new Folder("Ana", 1, root, false);
     Folder *subFolder3;
     subFolder3 = new Folder("Luis", 1, root, false);
 
     root->addSubFolder(folderOscar);
-    root->addSubFolder(subFolder2);
+    root->addSubFolder(folderAna);
     root->addSubFolder(subFolder3);
     root->printContent();
     cout << endl;
 
     Folder *directorioActual;
-    directorioActual = new Folder();
-
-    directorioActual = root->returnSubFolder("Oscar");
+    directorioActual = root->returnSubFolder("LeoBebe");
     directorioActual->printContent();
     cout << endl;
 
@@ -30,44 +95,72 @@ int main() {
     directorioActual->printContent();
     cout << endl;
 
+    //Subfolders Oscar
     Folder *subFolderOscar1;
     subFolderOscar1 = new Folder("Musica", 1, folderOscar, false);
     Folder *subFolderOscar2;
     subFolderOscar2 = new Folder("Documentos", 1, folderOscar, false);
-
     folderOscar->addSubFolder(subFolderOscar1);
     folderOscar->addSubFolder(subFolderOscar2);
 
-    directorioActual = folderOscar;
-    directorioActual->printContent();
-    cout << endl;
+    //Subfolders Ana
+    Folder *subFolderAna1;
+    subFolderAna1 = new Folder("Musica Ana", 1, folderAna, false);
+    Folder *subFolderAna2;
+    subFolderAna2 = new Folder("Documentos Ana", 1, folderAna, false);
+    folderAna->addSubFolder(subFolderAna1);
+    folderAna->addSubFolder(subFolderAna2);
 
-    directorioActual = folderOscar->returnSubFolder("Musica");
-    directorioActual->printContent();
-    cout << endl;
+    root->traverse();
 
-    directorioActual = directorioActual->retutnParentFolder();
-    directorioActual->printContent();
-    cout << endl;
+    Instruction comandoPrueba;
 
-    directorioActual = directorioActual->retutnParentFolder();
-    directorioActual->printContent();
-    cout << endl;
+    comandoPrueba.getCommand("rmdir LeoBebe");
+    comandoPrueba.execCommand(folderOscar);
 
-    File *archivoPrueba;
+    cout << "-----------------------------------------------------------------------" << endl;
+
+    root->traverse();
+
+    /*File *archivoPrueba;
     archivoPrueba = new File("Prueba", 1);
-
     directorioActual->addFile(archivoPrueba);
     directorioActual->printContent();
 
-    directorioActual->setOwnerPermissions("Oscar", true, true, true);
+    for (int i = 0; i < 10; ++i) {
+        cout << endl;
+    }
+    directorioActual = root;
+    directorioActual->setOwnerPermissions("Dueño", true, true, true);
+    directorioActual->traverse();
+
+    list<Folder*>::iterator iterator1;
+    iterator1 = directorioActual->subFolders.begin();
+
+    directorioActual->setOwnerPermissions(iterator1,"Oscar", true, true, true);
+
+    directorioActual = root;
+    directorioActual->printPath();
+    directorioActual->printPermissions();
+    directorioActual = folderOscar;
+    directorioActual->printPath();
+    directorioActual->printPermissions();
+    directorioActual = subFolderOscar1;
+    directorioActual->printPath();
+    directorioActual->printPermissions();
+    directorioActual = subFolderOscar2;
+    directorioActual->printPath();
     directorioActual->printPermissions();
 
     delete root;
     delete folderOscar;
-    delete subFolder2;
+    delete folderAna;
     delete subFolder3;
+    delete subFolderAna1;
+    delete subFolderAna2;
     delete subFolderOscar1;
     delete subFolderOscar2;
+    */
+
     return 0;
 }

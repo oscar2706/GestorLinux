@@ -35,6 +35,7 @@ public:
     void addSubFolder(Folder *subFolder);
     void addFile(File *newFile);
     void setNewName(const string &newFolderName);
+
     void printSubFolders();
     void printFiles();
     void printContent();
@@ -43,6 +44,9 @@ public:
     bool hasSubFolder(const string &searchedFolder);
     Folder* returnSubFolder(const string &searchedFolder);
     Folder* retutnParentFolder();
+    void traverse();
+    void getTraverse(list <Folder *> *);
+    Folder* findFolder(const string &_folderName);
     void setOwnerPermissions(const string &ownerName, bool canRead, bool canWrite, bool canExecute);
     void setGroupPermissions(const string &groupName, bool canRead, bool canWrite, bool canExecute);
     void setOthersPermissions(bool canRead, bool canWrite, bool canExecute);

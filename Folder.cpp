@@ -15,7 +15,7 @@ Folder::Folder() {
 
 Folder::Folder(const string &_folderName, int _size, Folder* _parentFolder, bool isRoot) {
     folderName = _folderName;
-    size = _size;
+    size = 0;
     parentFolder = _parentFolder;
     isRootFolder = isRoot;
     if(isRootFolder) {
@@ -102,31 +102,17 @@ void Folder::printContent() {
 }
 
 void Folder::setOwnerPermissions(const string &ownerName, bool canRead, bool canWrite, bool canExecute) {
-
     ownerPermissions.setName(ownerName);
     ownerPermissions.setPermissions(canRead, canWrite, canExecute);
-    /*
-    if(this->subFolders.empty()){
-        ownerPermissions.setName(ownerName);
-        ownerPermissions.setPermissions(canRead, canWrite, canExecute);
-        for (itrFile = files.begin();  itrFile != files.end(); ++itrFile) {
-            (*itrFile)->setOwnerPermissions(ownerName, canRead, canWrite, canExecute);
-        }
-    }
-    else{
-        for (itrFolder = subFolders.begin();  itrFolder != subFolders.end(); ++itrFolder) {
+    for (itrFolder = subFolders.begin();  itrFolder != subFolders.end(); ++itrFolder) {
+        if((*itrFolder)->subFolders.empty() == false){
+            (*itrFolder)->setOwnerPermissions(ownerName, canRead, canWrite, canExecute);
+        } else{
             (*itrFolder)->ownerPermissions.setName(ownerName);
             (*itrFolder)->ownerPermissions.setPermissions(canRead, canWrite, canExecute);
-            for (itrFile = files.begin();  itrFile != files.end(); ++itrFile) {
-                (*itrFile)->setOwnerPermissions(ownerName, canRead, canWrite, canExecute);
-            }
         }
-    }
 
-     */
-    /*
-     TODO Hacer los cambios para todos los archivos y subcarpetas(con sus resperctivos archivos)
-     */
+    }
 }
 
 void Folder::setGroupPermissions(const string &groupName, bool canRead, bool canWrite, bool canExecute) {
@@ -148,6 +134,58 @@ void Folder::printPermissions() {
     ownerPermissions.printPermission();
     groupPermissions.printPermission();
     othersPermissions.printPermission();
+    cout << endl;
+    /*
+    for (itrFolder = subFolders.begin();  itrFolder != subFolders.end(); ++itrFolder) {
+        cout << "Folder - " << (*itrFolder)->folderName << ": ";
+        (*itrFolder)->ownerPermissions.printPermission();
+        (*itrFolder)->groupPermissions.printPermission();
+        (*itrFolder)->othersPermissions.printPermission();
+    }
+    cout << endl;
+     */
+}
+
+void Folder::traverse() {
+    printPath();
+    printPermissions();
+    for (itrFolder = subFolders.begin();  itrFolder != subFolders.end(); ++itrFolder) {
+        if((*itrFolder)->subFolders.empty() == false){
+            (*itrFolder)->traverse();
+            //(*itrFolder)->printPath();
+        } else{
+            (*itrFolder)->printPath();
+            (*itrFolder)->printPermissions();
+        }
+    }
+}
+
+void Folder::getTraverse(list<Folder *> *foundFolders) {
+
+    for (itrFolder = subFolders.begin();  itrFolder != subFolders.end(); ++itrFolder) {
+        if((*itrFolder)->subFolders.empty() == false){
+            (*itrFolder)->getTraverse(foundFolders);
+            //(*itrFolder)->printPath();
+        } else{
+            cout << (*itrFolder)->getFolderName() << endl;
+            foundFolders->push_back(*(itrFolder));
+        }
+    }
+}
+
+Folder *Folder::findFolder(const string &_folderName) {
+
+    Folder *foundFolder;
+    foundFolder = nullptr;
+
+    for (itrFolder = subFolders.begin();  itrFolder != subFolders.end(); ++itrFolder) {
+        if((*itrFolder)->getFolderName() == _folderName) {
+            foundFolder = *(itrFolder);
+            break;
+        }
+    }
+
+    return foundFolder;
 }
 
 
