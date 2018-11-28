@@ -20,13 +20,15 @@ private:
     int selectedCommand;
     bool isValid;
     Folder *rootFolder;
+    User *currentUser;
 public:
     Instruction();
-    Instruction(Folder *rootFolder);
+    Instruction(Folder *rootFolder, User *_currentUser);
     Instruction(const string &_command, const string &_value);
     void getCommand(string commandToExec);
+    User * getCurrentUser();
     bool checkCommand();
-    Folder * execCommand(Folder* currentFolder, bool *bandera, list <User> &registeredUser);
+    Folder * execCommand(Folder* currentFolder, bool *bandera, list <User*> &registeredUser);
 
 };
 

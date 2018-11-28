@@ -58,3 +58,10 @@ string File::getFileName() {
 void File::setNewName(const string &newFileName) {
     fileName = newFileName;
 }
+
+void File::printPermissions() {
+    ownerPermissions.printPermission();
+    groupPermissions.printPermission();
+    othersPermissions.printPermission();
+    cout << endl;
+}

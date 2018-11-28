@@ -4,6 +4,14 @@
 
 #include "User.h"
 
+User::User() {
+    userName = "";
+    password = "";
+    group = "";
+    userFolder = new Folder();
+    rootUser = false;
+}
+
 User::User(const string &_userName, const string &_group) {
     userName = _userName;
     password = "password";

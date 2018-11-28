@@ -23,6 +23,7 @@ public:
     File(const string &fileName);
     void printFileName();
     void printData();
+    void printPermissions();
     string getFileName();
     void setNewName(const string &newFileName);
     void setOwnerPermissions(const string &ownerName, bool canRead, bool canWrite, bool canExecute);

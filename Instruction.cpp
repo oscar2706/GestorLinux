@@ -28,7 +28,7 @@ Instruction::Instruction() {
     rootFolder = new Folder();
 }
 
-Instruction::Instruction(Folder *_rootFolder) {
+Instruction::Instruction(Folder *_rootFolder, User * _currentUser) {
     isValid = false;
     command = "";
     value = "";
@@ -50,6 +50,7 @@ Instruction::Instruction(Folder *_rootFolder) {
     validCommands[15] = "userdel";
     selectedCommand = -1;
     rootFolder = _rootFolder;
+    currentUser = _currentUser;
 }
 
 Instruction::Instruction(const string &_command, const string &_value) {
@@ -77,6 +78,7 @@ void Instruction::getCommand(string commandToExec) {
     command.clear();
     value.clear();
     selectedCommand = -1;
+    isValid = false;
     char espacio = ' ';
     int posIntermedia = 0;
     for (int i = 0; i <commandToExec.size() ; ++i) {
@@ -92,21 +94,23 @@ void Instruction::getCommand(string commandToExec) {
     for (int j = posIntermedia; j < commandToExec.size(); ++j) {
         value.push_back(commandToExec.at(j));
     }
-    //cout << "Command = " << command << ", value = " << value << endl;
+    //cout << "Command = " << command << ", value = " << value << ", bandera = " << selectedCommand << endl;
 }
 
 bool Instruction::checkCommand() {
-    for (int i = 0; i <15; ++i) {
+    for (int i = 0; i <16; ++i) {
         if(command == validCommands[i]){
             isValid = true;
             selectedCommand = i;
             break;
         }
     }
+    //cout << "Command = " << command << ", value = " << value << ", bandera = " << selectedCommand << endl;
     return isValid;
 }
 
-Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera, list <User> &registeredUser) {
+Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera, list <User*> &registeredUser) {
+    //cout << "Command = " << command << ", value = " << value << ", bandera = " << selectedCommand << endl;
     switch (selectedCommand){
         case 0:{//mkdir :D
             if(value.empty())
@@ -233,16 +237,52 @@ Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera, list <Us
             }
             //currentFolder->printContent();
         }break;
-        case 9:{
+        case 9:{//su
+            bool userExists = false;
+            list <User*>::iterator itrUser;
+            string password;
+
+            if(value.empty()){
+                cout << "Incomplete command" << endl;
+            } else {
+                for(itrUser = registeredUser.begin(); itrUser != registeredUser.end(); ++itrUser) {
+                    if((*itrUser)->getUserName() == value) {
+                        userExists = true;
+                        break;
+                    }
+                }
+
+                if(userExists) {
+                    do {
+                        cout << "Type User Password: ";
+                        cin >> password;
+                    }while(password.empty());
+                    cin.ignore();
+
+                    if((*itrUser)->getUserPassword() == password) {
+                        User *selecteduser;
+                        selecteduser = (*itrUser);
+                        currentUser = selecteduser;
+                        cout << "Usuario en Instruction: " << currentUser->getUserName()<< endl;
+                    } else {
+                        cout << "Invalid password" << endl;
+                    }
+                }
+                else {
+                    cout << "User does not exist" << endl;
+                }
+            }
         }break;
         case 10:{
         }break;
         case 11:{//ls
             if(value.empty()){
                 currentFolder->printContent();
-            } /*else{
-                //cout << "file does not exist" << endl;
-            }*/
+            } else if(value == "-l") {
+                currentFolder->printContentDetailed();
+            } else {
+                cout << "Command not found" << endl;
+            }
         }break;
         case 12:{//pitree
             if(value.empty()) {
@@ -258,15 +298,15 @@ Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera, list <Us
             //cout << bandera;
         }break;
         case 14:{//adduser
-            string passsword;
+            string password;
             bool userExists = false;
-            list <User>::iterator itrUser;
+            list <User*>::iterator itrUser;
 
             if(value.empty()) {
                 cout << "Username needed" << endl;
             } else {
                 for(itrUser = registeredUser.begin(); itrUser != registeredUser.end(); ++itrUser) {
-                    if(itrUser->getUserName() == value) {
+                    if((*itrUser)->getUserName() == value) {
                         userExists = true;
                         break;
                     }
@@ -282,11 +322,12 @@ Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera, list <Us
 
                     do {
                         cout << "Type User Password: ";
-                        cin >> passsword;
-                    }while(passsword.empty());
+                        cin >> password;
+                    }while(password.empty());
                     cin.ignore();
 
-                    User newUser(value, passsword, value, userFolder, false);
+                    User *newUser;
+                    newUser = new User(value, password, value, userFolder, false);
                     registeredUser.push_back(newUser);
                 }
             }
@@ -294,22 +335,23 @@ Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera, list <Us
             //rootFolder->traverse();
         }break;
         case 15: {//userdel
-            list <User>::iterator itrUser;
+            list <User*>::iterator itrUser;
             bool userExists = false;
 
             if(value.empty()) {
                 cout << "Incomplete command" << endl;
             } else {
                 for(itrUser = registeredUser.begin(); itrUser != registeredUser.end(); ++itrUser) {
-                    if(itrUser->getUserName() == value) {
+                    if((*itrUser)->getUserName() == value) {
                         userExists = true;
                         break;
                     }
                 }
 
                 if(userExists) {
-                    (*itrUser).getUserFolder()->getTraverse();
-                    rootFolder->removeFolder(value);
+                    currentFolder = rootFolder;
+                    (*itrUser)->getUserFolder()->getTraverse();
+                    currentFolder->removeFolder(value);
                 }
                 else {
                     cout << "User does not exist" << endl;
@@ -322,4 +364,8 @@ Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera, list <Us
     }
 
     return currentFolder;
+}
+
+User *Instruction::getCurrentUser() {
+    return currentUser;
 }

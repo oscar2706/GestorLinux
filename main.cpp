@@ -9,8 +9,8 @@ using namespace std;
 
 int main() {
 
-    list<User> registeredUsers;
-    list<User>::iterator itrUsrs;
+    list<User*> registeredUsers;
+    list<User*>::iterator itrUsrs;
 
     ifstream lee;
     lee.open("Usuarios.txt");
@@ -26,8 +26,8 @@ int main() {
     lee >> folderName;
     lee >> rootUser;
     while (!lee.eof()){
-
-        User readUsear(userName,password,group,folderName,rootUser);
+        User *readUsear;
+        readUsear = new User(userName,password,group,folderName,rootUser);
         registeredUsers.push_back(readUsear);
 
         lee >> userName;
@@ -44,35 +44,43 @@ int main() {
         cout << "Type user name";
         cin >> typedName;
         for (itrUsrs = registeredUsers.begin(); itrUsrs != registeredUsers.end(); ++itrUsrs)
-            if(itrUsrs->getUserName() == typedName) {
+            if((*itrUsrs)->getUserName() == typedName) {
                 do{
                     cout << "Type password";
                     cin >> userPassword;
 
-                    if(userPassword == itrUsrs->getUserPassword())
+                    if(userPassword == (*itrUsrs)->getUserPassword())
                         access = true;
                 }while(!access);
                 break;
             }
     }while (!access);
 
+    User *usuarioActual;
+    usuarioActual = *(itrUsrs);
     Folder *directorioRoot;
     directorioRoot = new Folder("root", 15, nullptr, true);
     Folder *directorioActual;
     directorioActual = directorioRoot;
 
-    Instruction control(directorioRoot);
+    Instruction control(directorioRoot, usuarioActual);
     string typedCommand;
     bool exitFlag = false;
     cin.ignore();
     do{
         directorioActual->printPath();
-        cout << "$" << itrUsrs->getUserName() << ": ";
+        cout << "$" << usuarioActual->getUserName() << ": ";
         getline(cin, typedCommand, '\n');
         //cout << typedCommand << endl;
         control.getCommand(typedCommand);
-        if(control.checkCommand())
+        if(control.checkCommand()){
             directorioActual = control.execCommand(directorioActual, &exitFlag, registeredUsers);
+            usuarioActual = control.getCurrentUser();
+            //cout << "Cantidad usuarios = " << registeredUsers.size() << endl;
+        }
+        else {
+            cout << "Command not found" << endl;
+        }
 
     }while(!exitFlag);
 

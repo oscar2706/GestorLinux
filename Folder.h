@@ -42,6 +42,7 @@ public:
     void printSubFolders();
     void printFiles();
     void printContent();
+    void printContentDetailed();
     void printPath();
     void printPermissions();
     bool alreadyExistFolder(const string &folderName);

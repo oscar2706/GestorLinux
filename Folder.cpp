@@ -230,4 +230,16 @@ void Folder::removeFolder(const string &folderName) {
         }
 }
 
+void Folder::printContentDetailed() {
+    for(itrFile = files.begin(); itrFile != files.end(); ++itrFile) {
+            cout << (*itrFile)->getFileName() << endl;
+            (*itrFile)->printPermissions();
+        }
+
+    for(itrFolder = subFolders.begin(); itrFolder != subFolders.end(); ++itrFolder) {
+            cout << (*itrFolder)->getFolderName() << endl;
+            (*itrFolder)->printPermissions();
+        }
+}
+
 
