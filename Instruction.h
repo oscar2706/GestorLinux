@@ -7,6 +7,7 @@
 
 #include "Folder.h"
 #include "User.h"
+#include "HardDrive.h"
 #include <string>
 #include <stringlist.h>
 using namespace std;
@@ -28,7 +29,7 @@ public:
     void getCommand(string commandToExec);
     User * getCurrentUser();
     bool checkCommand();
-    Folder * execCommand(Folder* currentFolder, bool *bandera, list <User*> &registeredUser);
+    Folder * execCommand(Folder* currentFolder, bool *bandera, list <User*> &registeredUser, HardDrive *memory);
 
 };
 

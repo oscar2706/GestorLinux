@@ -7,14 +7,14 @@
 
 #include "File.h"
 #include "Permission.h"
+#include "HardDrive.h"
+
+#include <iostream>
 #include <string.h>
 #include <list>
-#include <iostream>
 using namespace std;
 
 class Folder {
-public:
-
 private:
     string folderName;
     int size;
@@ -52,7 +52,7 @@ public:
     File* returnFile(const string &searchedFile);
     Folder* retutnParentFolder();
     void traverse();
-    void getTraverse();
+    void getTraverse(HardDrive *memory);
     Folder* findFolder(const string &_folderName);
     void setOwnerPermissions(const string &ownerName, bool canRead, bool canWrite, bool canExecute);
     void setGroupPermissions(const string &groupName, bool canRead, bool canWrite, bool canExecute);

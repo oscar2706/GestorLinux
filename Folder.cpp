@@ -8,14 +8,15 @@ Folder::Folder() {
     folderName = "New Folder";
     size = 1;
     isRootFolder = false;
-    ownerPermissions = Permission();
-    groupPermissions = Permission();
-    othersPermissions = Permission();
+    ownerPermissions = Permission("New Folder");
+    groupPermissions = Permission("New Folder");
+    othersPermissions = Permission("");
 }
 
 Folder::Folder(const string &_folderName, int _size, Folder* _parentFolder, bool isRoot) {
     folderName = _folderName;
-    size = 0;
+    size = _size;
+    //size = 0;
     parentFolder = _parentFolder;
     isRootFolder = isRoot;
     if(isRootFolder) {
@@ -27,9 +28,9 @@ Folder::Folder(const string &_folderName, int _size, Folder* _parentFolder, bool
         currentPath.append(folderName);
         path = currentPath;
     }
-    ownerPermissions = Permission();
-    groupPermissions = Permission();
-    othersPermissions = Permission();
+    ownerPermissions = Permission(_folderName);
+    groupPermissions = Permission(_folderName);
+    othersPermissions = Permission("");
 }
 
 const string &Folder::getFolderName() const {
@@ -180,7 +181,27 @@ void Folder::traverse() {
     }
 }
 
-void Folder::getTraverse() {
+void Folder::getTraverse(HardDrive *memory) {
+    for(itrFolder = subFolders.begin(); itrFolder != subFolders.end(); itrFolder++) {
+        memory->remove((*itrFolder)->getFolderName(), 1);
+    }
+
+    for(itrFile = files.begin(); itrFile != files.end(); ++itrFile) {
+        memory->remove((*itrFile)->getFileName(), 2);
+    }
+
+
+    for (itrFolder = subFolders.begin();  itrFolder != subFolders.end(); ++itrFolder) {
+        if((*itrFolder)->subFolders.empty() == false){
+            (*itrFolder)->getTraverse(memory);
+            //(*itrFolder)->printPath();
+        } else{
+            //(*itrFolder)->printPath();
+            //out << endl;
+            //(*itrFolder)->printPermissions();
+        }
+    }
+
     subFolders.clear();
     files.clear();
 }

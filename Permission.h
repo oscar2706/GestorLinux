@@ -16,6 +16,7 @@ private:
     bool execute;
 public:
     Permission();
+    Permission(string _name);
     Permission(string _name, bool canRead, bool canWrite, bool canExecute);
     void setName(const string &_name);
     void setPermissions(bool canRead, bool canWrite, bool canExecute);

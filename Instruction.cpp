@@ -109,22 +109,28 @@ bool Instruction::checkCommand() {
     return isValid;
 }
 
-Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera, list <User*> &registeredUser) {
+Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera, list <User*> &registeredUser, HardDrive *memory) {
     //cout << "Command = " << command << ", value = " << value << ", bandera = " << selectedCommand << endl;
     switch (selectedCommand){
         case 0:{//mkdir :D
-            if(value.empty())
-                cout << "Unspecified name" << endl;
-            else if(currentFolder->alreadyExistFolder(value)){
-                cout << "Folder name already exists" << endl;
-            } else if(currentFolder->alreadyExistFile(value)) {
-                cout << "File already created with selected name" << endl;
-            } else {
-                Folder *newFolder;
-                newFolder = new Folder(value, 0, currentFolder, false);
-                currentFolder->addSubFolder(newFolder);
+            if(memory->getFreeSpace()>0){
+                if(value.empty())
+                    cout << "Unspecified name" << endl;
+                else if(currentFolder->alreadyExistFolder(value)){
+                    cout << "Folder name already exists" << endl;
+                } else if(currentFolder->alreadyExistFile(value)) {
+                    cout << "File already created with selected name" << endl;
+                } else {
+                    Folder *newFolder;
+                    newFolder = new Folder(value, 1, currentFolder, false);
+                    currentFolder->addSubFolder(newFolder);
+                    memory->add(value, 1, 1);
+                }
+                //currentFolder->printContent();
             }
-            //currentFolder->printContent();
+            else{
+                cout << "Full HardDrive. Suggestion: remove files" << endl;
+            }
         }break;
         case 1:{//rmdir :'C
             Folder *deletedFolder;
@@ -134,43 +140,55 @@ Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera, list <Us
                 cout << "Folder does not exist" << endl;
             }
             else {
-                deletedFolder->getTraverse();
+                deletedFolder->getTraverse(memory);
+                memory->remove(value, 1);
                 currentFolder->removeFolder(value);
             }
         }break;
         case 2:{//touch
-            if(value.empty())
-                cout << "Unspecified name" << endl;
-            else if(currentFolder->alreadyExistFile(value)){
-                cout << "File name already exists" << endl;
-            } else if(currentFolder->alreadyExistFolder(value)) {
-                cout << "Folder already created with selected name" << endl;
+            if(memory->getFreeSpace()>=2) {
+                if(value.empty())
+                    cout << "Unspecified name" << endl;
+                else if(currentFolder->alreadyExistFile(value)){
+                    cout << "File name already exists" << endl;
+                } else if(currentFolder->alreadyExistFolder(value)) {
+                    cout << "Folder already created with selected name" << endl;
+                } else {
+                    File *newFile;
+                    newFile = new File(value, 2);
+                    currentFolder->addFile(newFile);
+                    memory->add(value, 2, 2);
+                }
+                //currentFolder->printContent();
             } else {
-                File *newFile;
-                newFile = new File(value, 2);
-                currentFolder->addFile(newFile);
+                cout << "Full HardDrive. Suggestion: remove files" << endl;
             }
-            //currentFolder->printContent();
         }break;
         case 3:{//nano
-            if(value.empty())
-                cout << "Unspecified name" << endl;
-            else if(currentFolder->alreadyExistFile(value)){
-                cout << "File name already exists" << endl;
-            } else if(currentFolder->alreadyExistFolder(value)) {
-                cout << "Folder already created with selected name" << endl;
-            } else{
-                File *newFile;
-                newFile = new File(value);
-                currentFolder->addFile(newFile);
+            if(memory->getFreeSpace()>=5) {
+                if(value.empty())
+                    cout << "Unspecified name" << endl;
+                else if(currentFolder->alreadyExistFile(value)){
+                    cout << "File name already exists" << endl;
+                } else if(currentFolder->alreadyExistFolder(value)) {
+                    cout << "Folder already created with selected name" << endl;
+                } else{
+                    File *newFile;
+                    newFile = new File(value);
+                    currentFolder->addFile(newFile);
+                    memory->add(value, 2, newFile->getFileSize());
+                }
+                //currentFolder->printContent();
+            } else {
+                cout << "Full HardDrive. Suggestion: remove files" << endl;
             }
-            //currentFolder->printContent();
         }break;
         case 4:{//rm
             if(value.empty())
-                cout << "file name needed" << endl;
+                cout << "File name needed" << endl;
             else if(currentFolder->alreadyExistFile(value)){
                 currentFolder->removeFile(value);
+                memory->remove(value, 2);
             } else{
                 cout << "File Does Not Exist" << endl;
             }
@@ -365,7 +383,13 @@ Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera, list <Us
                 }
             }
         }break;
-        case 10:{
+        case 10:{//prisk
+            if(value.empty()) {
+                memory->graphicView();
+                cout << endl;
+            } else {
+                cout << "Command not found" << endl;
+            }
         }break;
         case 11:{//ls
             if(value.empty()){
@@ -448,7 +472,7 @@ Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera, list <Us
 
                 if(userExists) {
                     currentFolder = rootFolder;
-                    (*itrUser)->getUserFolder()->getTraverse();
+                    (*itrUser)->getUserFolder()->getTraverse(memory);
                     currentFolder->removeFolder(value);
                 }
                 else {

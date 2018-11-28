@@ -4,8 +4,8 @@
 
 //
 // Created by Spat on 25/11/18.
-File::File(const string &fileName) {
-    this->fileName = fileName;
+File::File(const string &_fileName) {
+    fileName = _fileName;
     cout << "Introduce the text you want to save in the file:\n";
     //cin.ignore();
     getline(cin, data);
@@ -13,20 +13,20 @@ File::File(const string &fileName) {
         size = 2;
     else
         size = 5;
-    ownerPermissions.setPermissions(true, true, true);
-    groupPermissions.setPermissions(true, false, true);
-    othersPermissions.setPermissions(true, false, false);
+    ownerPermissions = Permission(_fileName);
+    groupPermissions = Permission(_fileName);
+    othersPermissions = Permission("");
 }
 
-File::File(const string &fileName, int size) : fileName(fileName), data(data), size(size) {
-    this->fileName = fileName;
+File::File(const string &_fileName, int size) : fileName(_fileName), data(data), size(size) {
+    fileName = _fileName;
     //cout << "Introduce the text you want to save in the file:\n";
     //cin >> data;
     this->size = size;
     data = "";
-    ownerPermissions.setPermissions(true, true, true);
-    groupPermissions.setPermissions(true, false, true);
-    othersPermissions.setPermissions(true, false, false);
+    ownerPermissions = Permission(_fileName);
+    groupPermissions = Permission(_fileName);
+    othersPermissions = Permission("");
 }
 
 void File::printFileName() {
@@ -64,4 +64,8 @@ void File::printPermissions() {
     groupPermissions.printPermission();
     othersPermissions.printPermission();
     cout << endl;
+}
+
+int File::getFileSize() {
+    return size;
 }

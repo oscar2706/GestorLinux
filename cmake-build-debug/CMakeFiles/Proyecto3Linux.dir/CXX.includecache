@@ -23,6 +23,16 @@ File.h
 /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/File.h
 Permission.h
 /Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/Permission.h
+HardDrive.h
+/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/HardDrive.h
+iostream
+-
+string.h
+-
+list
+-
+
+/Users/oscar/Documents/Escuela/Otoño2018/Sistemas_Operativos/Programas/Proyecto3Linux/HardDrive.h
 string.h
 -
 list

@@ -1,6 +1,7 @@
 #include "Folder.h"
 #include "Instruction.h"
 #include "User.h"
+#include "HardDrive.h"
 #include <string.h>
 #include <iostream>
 #include <list>
@@ -8,6 +9,7 @@
 using namespace std;
 
 int main() {
+    HardDrive baseMemory(100);
 
     list<User*> registeredUsers;
     list<User*>::iterator itrUsrs;
@@ -63,6 +65,8 @@ int main() {
     Folder *directorioActual;
     directorioActual = directorioRoot;
 
+    baseMemory.add(directorioRoot->getFolderName(), 1, 1);
+
     Instruction control(directorioRoot, usuarioActual);
     string typedCommand;
     bool exitFlag = false;
@@ -74,7 +78,7 @@ int main() {
         //cout << typedCommand << endl;
         control.getCommand(typedCommand);
         if(control.checkCommand()){
-            directorioActual = control.execCommand(directorioActual, &exitFlag, registeredUsers);
+            directorioActual = control.execCommand(directorioActual, &exitFlag, registeredUsers, &baseMemory);
             usuarioActual = control.getCurrentUser();
             //cout << "Cantidad usuarios = " << registeredUsers.size() << endl;
         }

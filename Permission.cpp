@@ -20,9 +20,13 @@ Permission::Permission(string _name,bool canRead, bool canWrite, bool canExecute
 
 void Permission::setName(const string &_name) {
     name = _name;
+    read = false;
+    write = false;
+    execute = false;
 }
 
 void Permission::setPermissions(bool canRead, bool canWrite, bool canExecute) {
+    name = "";
     read = canRead;
     write = canWrite;
     execute = canExecute;
@@ -34,4 +38,11 @@ void Permission::printPermission() {
     cout << "write = " << write << ", ";
     cout << "execute = " << execute << endl;
 
+}
+
+Permission::Permission(string _name) {
+    name = _name;
+    read = false;
+    write = false;
+    execute = false;
 }
