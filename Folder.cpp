@@ -242,4 +242,13 @@ void Folder::printContentDetailed() {
         }
 }
 
+File *Folder::returnFile(const string &searchedFile) {
+    File *fileLocated;
+    for (itrFile = files.begin();  itrFile != files.end(); ++itrFile) {
+        if((*itrFile)->getFileName() == searchedFile)
+            fileLocated = *itrFile;
+    }
+    return fileLocated;
+}
+
 

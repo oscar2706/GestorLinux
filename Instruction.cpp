@@ -117,7 +117,9 @@ Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera, list <Us
                 cout << "Unspecified name" << endl;
             else if(currentFolder->alreadyExistFolder(value)){
                 cout << "Folder name already exists" << endl;
-            } else{
+            } else if(currentFolder->alreadyExistFile(value)) {
+                cout << "File already created with selected name" << endl;
+            } else {
                 Folder *newFolder;
                 newFolder = new Folder(value, 0, currentFolder, false);
                 currentFolder->addSubFolder(newFolder);
@@ -141,7 +143,9 @@ Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera, list <Us
                 cout << "Unspecified name" << endl;
             else if(currentFolder->alreadyExistFile(value)){
                 cout << "File name already exists" << endl;
-            } else{
+            } else if(currentFolder->alreadyExistFolder(value)) {
+                cout << "Folder already created with selected name" << endl;
+            } else {
                 File *newFile;
                 newFile = new File(value, 2);
                 currentFolder->addFile(newFile);
@@ -153,6 +157,8 @@ Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera, list <Us
                 cout << "Unspecified name" << endl;
             else if(currentFolder->alreadyExistFile(value)){
                 cout << "File name already exists" << endl;
+            } else if(currentFolder->alreadyExistFolder(value)) {
+                cout << "Folder already created with selected name" << endl;
             } else{
                 File *newFile;
                 newFile = new File(value);
@@ -166,27 +172,82 @@ Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera, list <Us
             else if(currentFolder->alreadyExistFile(value)){
                 currentFolder->removeFile(value);
             } else{
-                cout << "file does not exist" << endl;
+                cout << "File Does Not Exist" << endl;
             }
             //currentFolder->printContent();
         }break;
         case 5:{//cat
             if(value.empty())
-                cout << "Debug File name needed" << endl;
+                cout << "File Name Needed" << endl;
             else if(currentFolder->alreadyExistFile(value)){
                 currentFolder->openFile(value);
             } else{
-                cout << "file does not exist" << endl;
+                cout << "File does not exist" << endl;
             }
             //currentFolder->printContent();
         }break;
-        case 6:{
+        case 6:{//chmod
+            if(value.empty()) {
+                cout << "Incomplete Command" << endl;
+            } else {
+                char espacio = ' ';
+                string fName;
+                string permissions;
+                File *fileToModify;
+                Folder *folderToModify;
+                bool lectura, escritura, ejecucion;
+
+                int posIntermedia = 0;
+                for (int i = 0; i <value.size() ; ++i) {
+                    if(value.at(i) != espacio){
+                        fName.push_back(value.at(i));
+                        posIntermedia = i+2;
+                    } else
+                        break;
+                }
+                for (int j = posIntermedia; j < value.size(); ++j) {
+                    permissions.push_back(value.at(j));
+                }
+                if(permissions.empty() || fName.empty())
+                    cout << "Incomplete command" << endl;
+                else{
+                    if(permissions.size()!=3) {
+                        cout << "Incorrect permission values" << endl;
+                    } else {
+                        if(currentFolder->alreadyExistFolder(fName) || currentFolder->alreadyExistFile(fName)) {
+                            //cout << permissions.at(0) << "/" << permissions.at(1) << "/" << permissions.at(2) << endl;
+                            if(currentFolder->alreadyExistFile(fName)) {
+                                fileToModify = currentFolder->returnFile(fName);
+
+                                if((permissions.at(0) == '1' || permissions.at(0) == '0')&&(permissions.at(1) == '1' || permissions.at(1) == '0')&&(permissions.at(2) == '1' || permissions.at(2) == '0')) {
+                                    lectura = permissions.at(0) == '1';
+                                    escritura = permissions.at(1) == '1';
+                                    ejecucion = permissions.at(2) == '1';
+                                    fileToModify->setOwnerPermissions(currentUser->getUserName(), lectura, escritura, ejecucion);
+                                }
+                            } else {
+                                //folderToModify = currentFolder->returnSubFolder(fName);
+
+                                if((permissions.at(0) == '1' || permissions.at(0) == '0')&&(permissions.at(1) == '1' || permissions.at(1) == '0')&&(permissions.at(2) == '1' || permissions.at(2) == '0')) {
+                                    lectura = permissions.at(0) == '1';
+                                    escritura = permissions.at(1) == '1';
+                                    ejecucion = permissions.at(2) == '1';
+                                    cout << lectura << " " << escritura << " " << ejecucion << endl;
+                                    (currentFolder->returnSubFolder(fName))->setOwnerPermissions(currentUser->getUserName(), lectura, escritura, ejecucion);
+                                }
+                            }
+                        }
+                        else {
+                            cout << "File or Folder does not exist" << endl;
+                        }
+                    }
+                }
+            }
         }break;
         case 7:{//mv
             if(value.empty())
-                cout << "incomplete command" << endl;
+                cout << "Incomplete Command" << endl;
             else{
-
                 char espacio = ' ';
                 string oldName;
                 string newName;
@@ -208,6 +269,8 @@ Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera, list <Us
                     if(currentFolder->alreadyExistFile(oldName)){
                         if(currentFolder->alreadyExistFile(newName)){
                             cout << "File already exists" << endl;
+                        } else if(currentFolder->alreadyExistFolder(newName)) {
+                            cout << "Folder already created with selected name" << endl;
                         } else{
                             currentFolder->changeFileName(oldName, newName);
                         }
@@ -316,19 +379,25 @@ Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera, list <Us
                     cout << "User already exists" << endl;
                 }
                 else {
-                    Folder *userFolder;
-                    userFolder = new Folder(value, 15, rootFolder, false);
-                    rootFolder->addSubFolder(userFolder);
+                    if(currentFolder->alreadyExistFile(value)){
+                        cout << "File already exists" << endl;
+                    } else if(currentFolder->alreadyExistFolder(value)) {
+                        cout << "Folder already created with selected name" << endl;
+                    } else{
+                        Folder *userFolder;
+                        userFolder = new Folder(value, 15, rootFolder, false);
+                        rootFolder->addSubFolder(userFolder);
 
-                    do {
-                        cout << "Type User Password: ";
-                        cin >> password;
-                    }while(password.empty());
-                    cin.ignore();
+                        do {
+                            cout << "Type User Password: ";
+                            cin >> password;
+                        }while(password.empty());
+                        cin.ignore();
 
-                    User *newUser;
-                    newUser = new User(value, password, value, userFolder, false);
-                    registeredUser.push_back(newUser);
+                        User *newUser;
+                        newUser = new User(value, password, value, userFolder, false);
+                        registeredUser.push_back(newUser);
+                    }
                 }
             }
 

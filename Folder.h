@@ -49,11 +49,13 @@ public:
     bool alreadyExistFile(const string &fileName);
     bool hasSubFolder(const string &searchedFolder);
     Folder* returnSubFolder(const string &searchedFolder);
+    File* returnFile(const string &searchedFile);
     Folder* retutnParentFolder();
     void traverse();
     void getTraverse();
     Folder* findFolder(const string &_folderName);
     void setOwnerPermissions(const string &ownerName, bool canRead, bool canWrite, bool canExecute);
+    void modifyOwnerPermissions(const string &ownerName);
     void setGroupPermissions(const string &groupName, bool canRead, bool canWrite, bool canExecute);
     void setOthersPermissions(bool canRead, bool canWrite, bool canExecute);
 };
