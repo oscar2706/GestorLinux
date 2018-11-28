@@ -34,13 +34,17 @@ public:
     const string &getFolderName() const;
     void addSubFolder(Folder *subFolder);
     void addFile(File *newFile);
+    void removeFile(const string &fileName);
     void setNewName(const string &newFolderName);
-
+    void openFile(const string &fileName);
+    void changeFileName(const string &oldFileName, const string &newFileName);
     void printSubFolders();
     void printFiles();
     void printContent();
     void printPath();
     void printPermissions();
+    bool alreadyExistFolder(const string &folderName);
+    bool alreadyExistFile(const string &fileName);
     bool hasSubFolder(const string &searchedFolder);
     Folder* returnSubFolder(const string &searchedFolder);
     Folder* retutnParentFolder();

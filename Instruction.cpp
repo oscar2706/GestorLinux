@@ -44,6 +44,8 @@ Instruction::Instruction(const string &_command, const string &_value) {
 }
 
 void Instruction::getCommand(string commandToExec) {
+    command = "";
+    value = "";
     char espacio = ' ';
     int posIntermedia = 0;
     for (int i = 0; i <commandToExec.size() ; ++i) {
@@ -54,14 +56,16 @@ void Instruction::getCommand(string commandToExec) {
             break;
     }
 
-    for (int j = posIntermedia; j <commandToExec.size(); ++j) {
+    //cout << "posIntermedia: " << posIntermedia << ", commandToExec: " << commandToExec.size() << endl;
+
+    for (int j = posIntermedia; j < commandToExec.size(); ++j) {
         value.push_back(commandToExec.at(j));
     }
     //cout << "Command = " << command << ", value = " << value << endl;
 }
 
 bool Instruction::checkCommand() {
-    for (int i = 0; i <13; ++i) {
+    for (int i = 0; i <14; ++i) {
         if(command == validCommands[i]){
             isValid = true;
             selectedCommand = i;
@@ -71,46 +75,143 @@ bool Instruction::checkCommand() {
     return isValid;
 }
 
-void Instruction::execCommand(Folder* currentFolder) {
+void Instruction::execCommand(Folder* currentFolder, bool *bandera) {
     switch (selectedCommand){
-        case 0:{
-            Folder *newFolder;
-            newFolder = new Folder(value, 0, currentFolder, false);
-            currentFolder->addSubFolder(newFolder);
-            //currentFolder->addSubFolder()
+        case 0:{//mkdir :D
+            if(value.empty())
+                cout << "Unspecified name" << endl;
+            else if(currentFolder->alreadyExistFolder(value)){
+                cout << "Folder name already exists" << endl;
+            } else{
+                Folder *newFolder;
+                newFolder = new Folder(value, 0, currentFolder, false);
+                currentFolder->addSubFolder(newFolder);
+            }
+            currentFolder->printContent();
         }break;
-        case 1:{
+        case 1:{//rmdir :'C
             list <Folder *> foldersToDelete;
-            list <Folder *> *foldersDeleted;
             list <Folder *>::iterator itrFoldersDelete;
             Folder *deletedFolder;
+            Folder* delFolder;
             deletedFolder = currentFolder->findFolder(value);
 
             if(!deletedFolder) {
                 cout << "Folder no Encontrado" << endl;
             }
             else {
-                foldersDeleted = deletedFolder->getTraverse(&foldersToDelete);
+                deletedFolder->getTraverse(&foldersToDelete);
 
-                for(itrFoldersDelete = foldersDeleted->begin(); itrFoldersDelete != foldersDeleted->end(); itrFoldersDelete++) {
-                    cout << (*itrFoldersDelete)->getFolderName();
-                    delete (*itrFoldersDelete);
+                cout << "Archivos de la Lista:" << foldersToDelete.size() << endl;
+                for(itrFoldersDelete = foldersToDelete.begin(); itrFoldersDelete != foldersToDelete.end(); itrFoldersDelete++) {
+                    (*itrFoldersDelete)->printContent();
+                    cout << endl;
+
+                    delFolder = *itrFoldersDelete;
+                    delete delFolder;
                 }
+
+                //delFolder = deletedFolder;
+                //delete deletedFolder;
             }
         }break;
-        case 2:{
+        case 2:{//touch
+            if(value.empty())
+                cout << "Unspecified name" << endl;
+            else if(currentFolder->alreadyExistFile(value)){
+                cout << "File name already exists" << endl;
+            } else{
+                File *newFile;
+                newFile = new File(value, 2);
+                currentFolder->addFile(newFile);
+            }
+            currentFolder->printContent();
         }break;
-        case 3:{
+        case 3:{//nano
+            if(value.empty())
+                cout << "Unspecified name" << endl;
+            else if(currentFolder->alreadyExistFile(value)){
+                cout << "File name already exists" << endl;
+            } else{
+                File *newFile;
+                newFile = new File(value);
+                currentFolder->addFile(newFile);
+            }
+            currentFolder->printContent();
         }break;
-        case 4:{
+        case 4:{//rm
+            if(value.empty())
+                cout << "file name needed" << endl;
+            else if(currentFolder->alreadyExistFile(value)){
+                currentFolder->removeFile(value);
+            } else{
+                cout << "file does not exist" << endl;
+            }
+            currentFolder->printContent();
         }break;
-        case 5:{
+        case 5:{//cat
+            if(value.empty())
+                cout << "file name needed" << endl;
+            else if(currentFolder->alreadyExistFile(value)){
+                currentFolder->openFile(value);
+            } else{
+                cout << "file does not exist" << endl;
+            }
+            currentFolder->printContent();
         }break;
         case 6:{
         }break;
-        case 7:{
+        case 7:{//mv
+            if(value.empty())
+                cout << "incomplete command" << endl;
+            else{
+
+                char espacio = ' ';
+                string oldName;
+                string newName;
+
+                int posIntermedia = 0;
+                for (int i = 0; i <value.size() ; ++i) {
+                    if(value.at(i) != espacio){
+                        oldName.push_back(value.at(i));
+                        posIntermedia = i+2;
+                    } else
+                        break;
+                }
+                for (int j = posIntermedia; j < value.size(); ++j) {
+                    newName.push_back(value.at(j));
+                }
+                if(newName.empty() || oldName.empty())
+                    cout << "Incomplete command" << endl;
+                else{
+                    if(currentFolder->alreadyExistFile(oldName)){
+                        if(currentFolder->alreadyExistFile(newName)){
+                            cout << "File already exists" << endl;
+                        } else{
+                            currentFolder->changeFileName(oldName, newName);
+                        }
+                    } else{
+                        cout << "File does not exists" << endl;
+                    }
+                }
+            }
+            currentFolder->printContent();
         }break;
-        case 8:{
+        case 8:{//cd
+            string pattern = "..";
+            if(value.empty())
+                cout << "Folder name needed" << endl;
+            else {
+                if (value == pattern) {
+                    currentFolder = currentFolder->retutnParentFolder();
+                }
+                else if(currentFolder->alreadyExistFolder(value)) {
+                    currentFolder = currentFolder->returnSubFolder(value);
+                } else {
+                    cout << "Folder does not exist";
+                }
+            }
+            currentFolder->printContent();
         }break;
         case 9:{
         }break;
@@ -121,9 +222,13 @@ void Instruction::execCommand(Folder* currentFolder) {
         case 12:{
         }break;
         case 13:{
+            //cout << value.length() << endl;
+            if(value.length() == 0)
+                *bandera = true;
+            //cout << bandera;
         }break;
         default :{
-
+            cout << "Default" << endl;
         }
     }
 }

@@ -1,10 +1,6 @@
-Pene
-password
-Pene
-Pene
+root
+pass
+root
+root
 1
-Pene2
-password
-Pene2
-Pene2
-0
+

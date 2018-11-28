@@ -90,9 +90,9 @@ void Folder::printFiles() {
 
 void Folder::printPath() {
     if(isRootFolder)
-        cout << "/" << endl;
+        cout << "/";
     else
-        cout << path << endl;
+        cout << path;
 }
 
 void Folder::printContent() {
@@ -161,14 +161,20 @@ void Folder::traverse() {
 }
 
 void Folder::getTraverse(list<Folder *> *foundFolders) {
-
+    //foundFolders->push_back(this);
     for (itrFolder = subFolders.begin();  itrFolder != subFolders.end(); ++itrFolder) {
         if((*itrFolder)->subFolders.empty() == false){
             (*itrFolder)->getTraverse(foundFolders);
             //(*itrFolder)->printPath();
         } else{
-            cout << (*itrFolder)->getFolderName() << endl;
-            foundFolders->push_back(*(itrFolder));
+            foundFolders->push_back((*itrFolder));
+
+            Folder* delFolder;
+            delFolder = *itrFolder;
+            //cout << delFolder->getFolderName() << endl;
+            delete delFolder;
+            cout << (*itrFolder)->getFolderName();
+
         }
     }
 }
@@ -186,6 +192,48 @@ Folder *Folder::findFolder(const string &_folderName) {
     }
 
     return foundFolder;
+}
+
+bool Folder::alreadyExistFolder(const string &folderName) {
+    bool isCopied = false;
+    for(itrFolder = subFolders.begin(); itrFolder != subFolders.end(); ++itrFolder){
+        if(folderName == (*itrFolder)->getFolderName())
+            isCopied = true;
+    }
+    return isCopied;
+}
+
+bool Folder::alreadyExistFile(const string &fileName) {
+    bool isCopied = false;
+    for(itrFile= files.begin(); itrFile!= files.end(); ++itrFile){
+        if(fileName == (*itrFile)->getFileName())
+            isCopied = true;
+    }
+    return isCopied;
+}
+
+void Folder::removeFile(const string &fileName) {
+    for(itrFile = files.begin(); itrFile != files.end(); ++itrFile)
+        if(fileName == (*itrFile)->getFileName()){
+            files.remove((*itrFile));
+            break;
+        }
+}
+
+void Folder::openFile(const string &fileName) {
+    for(itrFile = files.begin(); itrFile != files.end(); ++itrFile)
+        if(fileName == (*itrFile)->getFileName()){
+            (*itrFile)->printData();
+            break;
+        }
+}
+
+void Folder::changeFileName(const string &oldFileName, const string &newFileName) {
+    for(itrFile = files.begin(); itrFile != files.end(); ++itrFile)
+        if(oldFileName== (*itrFile)->getFileName()){
+            (*itrFile)->setNewName(newFileName);
+            break;
+        }
 }
 
 

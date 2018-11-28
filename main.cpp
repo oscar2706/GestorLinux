@@ -9,7 +9,7 @@ using namespace std;
 
 int main() {
 
-    /*list<User> registeredUsers;
+    list<User> registeredUsers;
     list<User>::iterator itrUsrs;
 
     ifstream lee;
@@ -56,21 +56,28 @@ int main() {
             }
     }while (!access);
 
+    Folder *directorioRoot;
+    directorioRoot = new Folder("root", 15, nullptr, true);
     Folder *directorioActual;
-    directorioActual = itrUsrs->getUserFolder();
+    directorioActual = directorioRoot;
 
     Instruction control;
     string typedCommand;
+    bool exitFlag = false;
+    cin.ignore();
     do{
+        directorioActual->printPath();
         cout << itrUsrs->getUserName() << ": ";
-        cin >> typedCommand;
+        getline(cin, typedCommand, '\n');
+        //cout << typedCommand << endl;
         control.getCommand(typedCommand);
         if(control.checkCommand())
-            control.execCommand(directorioActual);
-    }while;*/
+            control.execCommand(directorioActual, &exitFlag);
+
+    }while(!exitFlag);
 
 
-    //Pruebas
+    /*//Pruebas
     Folder *root;
     root = new Folder("root",1, nullptr, true);
     Folder *folderOscar;
@@ -103,6 +110,14 @@ int main() {
     folderOscar->addSubFolder(subFolderOscar1);
     folderOscar->addSubFolder(subFolderOscar2);
 
+    //Subfolders Documentos
+    Folder *subFolderDocumentos1;
+    subFolderOscar1 = new Folder("Musica1", 1, subFolderOscar2, false);
+    Folder *subFolderDocumentos2;
+    subFolderOscar2 = new Folder("Documentos1", 1, subFolderOscar2, false);
+    folderOscar->addSubFolder(subFolderDocumentos1);
+    folderOscar->addSubFolder(subFolderDocumentos2);
+
     //Subfolders Ana
     Folder *subFolderAna1;
     subFolderAna1 = new Folder("Musica Ana", 1, folderAna, false);
@@ -116,11 +131,12 @@ int main() {
     Instruction comandoPrueba;
 
     comandoPrueba.getCommand("rmdir LeoBebe");
-    comandoPrueba.execCommand(folderOscar);
+    comandoPrueba.checkCommand();
+    comandoPrueba.execCommand(root);
 
     cout << "-----------------------------------------------------------------------" << endl;
 
-    root->traverse();
+    root->traverse();*/
 
     /*File *archivoPrueba;
     archivoPrueba = new File("Prueba", 1);

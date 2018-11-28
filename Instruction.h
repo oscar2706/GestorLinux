@@ -23,7 +23,7 @@ public:
     Instruction(const string &_command, const string &_value);
     void getCommand(string commandToExec);
     bool checkCommand();
-    void execCommand(Folder* currentFolder);
+    void execCommand(Folder* currentFolder, bool *bandera);
 
 };
 

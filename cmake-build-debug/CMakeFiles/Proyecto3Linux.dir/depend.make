@@ -3,6 +3,7 @@
 
 CMakeFiles/Proyecto3Linux.dir/File.cpp.o: ../File.cpp
 CMakeFiles/Proyecto3Linux.dir/File.cpp.o: ../File.h
+CMakeFiles/Proyecto3Linux.dir/File.cpp.o: ../Permission.h
 
 CMakeFiles/Proyecto3Linux.dir/Folder.cpp.o: ../File.h
 CMakeFiles/Proyecto3Linux.dir/Folder.cpp.o: ../Folder.cpp

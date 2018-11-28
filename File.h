@@ -20,8 +20,11 @@ private:
     Permission othersPermissions;
 public:
     File(const string &fileName, int size);
+    File(const string &fileName);
     void printFileName();
     void printData();
+    string getFileName();
+    void setNewName(const string &newFileName);
     void setOwnerPermissions(const string &ownerName, bool canRead, bool canWrite, bool canExecute);
     void setGroupPermissions(const string &groupName, bool canRead, bool canWrite, bool canExecute);
     void setOthersPermissions(bool canRead, bool canWrite, bool canExecute);
