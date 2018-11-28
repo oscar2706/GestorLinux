@@ -18,6 +18,7 @@ CMakeFiles/Proyecto3Linux.dir/Instruction.cpp.o: ../Folder.h
 CMakeFiles/Proyecto3Linux.dir/Instruction.cpp.o: ../Instruction.cpp
 CMakeFiles/Proyecto3Linux.dir/Instruction.cpp.o: ../Instruction.h
 CMakeFiles/Proyecto3Linux.dir/Instruction.cpp.o: ../Permission.h
+CMakeFiles/Proyecto3Linux.dir/Instruction.cpp.o: ../User.h
 
 CMakeFiles/Proyecto3Linux.dir/Permission.cpp.o: ../Permission.cpp
 CMakeFiles/Proyecto3Linux.dir/Permission.cpp.o: ../Permission.h

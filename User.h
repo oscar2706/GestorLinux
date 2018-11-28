@@ -21,6 +21,7 @@ private:
     bool rootUser;
 public:
     User(const string &_userName, const string &_group);
+    User(const string &_userName, const string &_password, const string &_group, Folder *_userFolder, const bool &_rootUser);
     User(const string &_userName, const string &_password, const string &_group, const string &_userFolderName, const bool &_rootUser);
     bool isRoot();
     bool hasUserFolder();

@@ -146,35 +146,23 @@ void Folder::printPermissions() {
 
 void Folder::traverse() {
     printPath();
-    printPermissions();
+    cout << endl;
+    //printPermissions();
     for (itrFolder = subFolders.begin();  itrFolder != subFolders.end(); ++itrFolder) {
         if((*itrFolder)->subFolders.empty() == false){
             (*itrFolder)->traverse();
             //(*itrFolder)->printPath();
         } else{
             (*itrFolder)->printPath();
-            (*itrFolder)->printPermissions();
+            cout << endl;
+            //(*itrFolder)->printPermissions();
         }
     }
 }
 
-void Folder::getTraverse(list<Folder *> *foundFolders) {
-    //foundFolders->push_back(this);
-    for (itrFolder = subFolders.begin();  itrFolder != subFolders.end(); ++itrFolder) {
-        if((*itrFolder)->subFolders.empty() == false){
-            (*itrFolder)->getTraverse(foundFolders);
-            //(*itrFolder)->printPath();
-        } else{
-            foundFolders->push_back((*itrFolder));
-
-            Folder* delFolder;
-            delFolder = *itrFolder;
-            //cout << delFolder->getFolderName() << endl;
-            delete delFolder;
-            cout << (*itrFolder)->getFolderName();
-
-        }
-    }
+void Folder::getTraverse() {
+    subFolders.clear();
+    files.clear();
 }
 
 Folder *Folder::findFolder(const string &_folderName) {
@@ -230,6 +218,14 @@ void Folder::changeFileName(const string &oldFileName, const string &newFileName
     for(itrFile = files.begin(); itrFile != files.end(); ++itrFile)
         if(oldFileName== (*itrFile)->getFileName()){
             (*itrFile)->setNewName(newFileName);
+            break;
+        }
+}
+
+void Folder::removeFolder(const string &folderName) {
+    for(itrFolder = subFolders.begin(); itrFolder != subFolders.end(); ++itrFolder)
+        if(folderName == (*itrFolder)->getFolderName()){
+            subFolders.remove((*itrFolder));
             break;
         }
 }

@@ -11,6 +11,26 @@ User::User(const string &_userName, const string &_group) {
     rootUser = false;
 }
 
+User::User(const string &_userName, const string &_password, const string &_group, Folder *_userFolder,
+           const bool &_rootUser) {
+    userName = _userName;
+    password = _password;
+    group = _group;
+    userFolder = _userFolder;
+    rootUser = _rootUser;
+}
+
+User::User(const string &_userName, const string &_password, const string &_group, const string &_userFolderName,
+           const bool &_rootUser) {
+    userName = _userName;
+    password = _password;
+    group = _group;
+    userFolder = new Folder();
+    userFolder->setNewName(_userFolderName);
+    rootUser = _rootUser;
+
+}
+
 void User::save() {
     ofstream guarda;
     guarda.open("Usuarios.txt", ios::app);
@@ -24,17 +44,6 @@ void User::save() {
 
 void User::setUserFolder(Folder* folder) {
     userFolder = folder;
-}
-
-User::User(const string &_userName, const string &_password, const string &_group, const string &_userFolderName,
-           const bool &_rootUser) {
-    userName = _userName;
-    password = _password;
-    group = _group;
-    userFolder = new Folder();
-    userFolder->setNewName(_userFolderName);
-    rootUser = _rootUser;
-
 }
 
 void User::printInfo() {
