@@ -67,12 +67,12 @@ int main() {
     cin.ignore();
     do{
         directorioActual->printPath();
-        cout << itrUsrs->getUserName() << ": ";
+        cout << "$" << itrUsrs->getUserName() << ": ";
         getline(cin, typedCommand, '\n');
         //cout << typedCommand << endl;
         control.getCommand(typedCommand);
         if(control.checkCommand())
-            control.execCommand(directorioActual, &exitFlag);
+            directorioActual = control.execCommand(directorioActual, &exitFlag);
 
     }while(!exitFlag);
 

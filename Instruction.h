@@ -13,7 +13,7 @@ using namespace std;
 class Instruction {
     friend class Folder;
 private:
-    string validCommands[14];
+    string validCommands[15];
     string command;
     string value;
     int selectedCommand;
@@ -23,7 +23,7 @@ public:
     Instruction(const string &_command, const string &_value);
     void getCommand(string commandToExec);
     bool checkCommand();
-    void execCommand(Folder* currentFolder, bool *bandera);
+    Folder * execCommand(Folder* currentFolder, bool *bandera);
 
 };
 

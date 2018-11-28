@@ -19,7 +19,7 @@ Folder::Folder(const string &_folderName, int _size, Folder* _parentFolder, bool
     parentFolder = _parentFolder;
     isRootFolder = isRoot;
     if(isRootFolder) {
-        path = "";
+        path = "root";
     }
     else{
         string currentPath = parentFolder->path;
@@ -89,14 +89,12 @@ void Folder::printFiles() {
 }
 
 void Folder::printPath() {
-    if(isRootFolder)
-        cout << "/";
-    else
         cout << path;
 }
 
 void Folder::printContent() {
-    printPath();
+    //printPath();
+    //cout << endl;
     printSubFolders();
     printFiles();
 }

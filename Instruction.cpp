@@ -22,6 +22,7 @@ Instruction::Instruction() {
     validCommands[11] = "ls";
     validCommands[12] = "pitree";
     validCommands[13] = "exit";
+    validCommands[14] = "adduser";
     selectedCommand = -1;
 }
 
@@ -40,6 +41,7 @@ Instruction::Instruction(const string &_command, const string &_value) {
     validCommands[11] = "ls";
     validCommands[12] = "pitree";
     validCommands[13] = "exit";
+    validCommands[14] = "adduser";
     selectedCommand = -1;
 }
 
@@ -65,7 +67,7 @@ void Instruction::getCommand(string commandToExec) {
 }
 
 bool Instruction::checkCommand() {
-    for (int i = 0; i <14; ++i) {
+    for (int i = 0; i <15; ++i) {
         if(command == validCommands[i]){
             isValid = true;
             selectedCommand = i;
@@ -75,7 +77,7 @@ bool Instruction::checkCommand() {
     return isValid;
 }
 
-void Instruction::execCommand(Folder* currentFolder, bool *bandera) {
+Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera) {
     switch (selectedCommand){
         case 0:{//mkdir :D
             if(value.empty())
@@ -87,7 +89,7 @@ void Instruction::execCommand(Folder* currentFolder, bool *bandera) {
                 newFolder = new Folder(value, 0, currentFolder, false);
                 currentFolder->addSubFolder(newFolder);
             }
-            currentFolder->printContent();
+            //currentFolder->printContent();
         }break;
         case 1:{//rmdir :'C
             list <Folder *> foldersToDelete;
@@ -125,7 +127,7 @@ void Instruction::execCommand(Folder* currentFolder, bool *bandera) {
                 newFile = new File(value, 2);
                 currentFolder->addFile(newFile);
             }
-            currentFolder->printContent();
+            //currentFolder->printContent();
         }break;
         case 3:{//nano
             if(value.empty())
@@ -137,7 +139,7 @@ void Instruction::execCommand(Folder* currentFolder, bool *bandera) {
                 newFile = new File(value);
                 currentFolder->addFile(newFile);
             }
-            currentFolder->printContent();
+            //currentFolder->printContent();
         }break;
         case 4:{//rm
             if(value.empty())
@@ -147,7 +149,7 @@ void Instruction::execCommand(Folder* currentFolder, bool *bandera) {
             } else{
                 cout << "file does not exist" << endl;
             }
-            currentFolder->printContent();
+            //currentFolder->printContent();
         }break;
         case 5:{//cat
             if(value.empty())
@@ -157,7 +159,7 @@ void Instruction::execCommand(Folder* currentFolder, bool *bandera) {
             } else{
                 cout << "file does not exist" << endl;
             }
-            currentFolder->printContent();
+            //currentFolder->printContent();
         }break;
         case 6:{
         }break;
@@ -195,29 +197,37 @@ void Instruction::execCommand(Folder* currentFolder, bool *bandera) {
                     }
                 }
             }
-            currentFolder->printContent();
+            //currentFolder->printContent();
         }break;
         case 8:{//cd
             string pattern = "..";
+            Folder *foundFolder;
             if(value.empty())
                 cout << "Folder name needed" << endl;
             else {
-                if (value == pattern) {
-                    currentFolder = currentFolder->retutnParentFolder();
+                if (value == pattern && (currentFolder->retutnParentFolder() != nullptr)) {
+                    foundFolder = currentFolder->retutnParentFolder();
+                    currentFolder = foundFolder;
                 }
                 else if(currentFolder->alreadyExistFolder(value)) {
-                    currentFolder = currentFolder->returnSubFolder(value);
+                    foundFolder = currentFolder->returnSubFolder(value);
+                    currentFolder = foundFolder;
                 } else {
                     cout << "Folder does not exist";
                 }
             }
-            currentFolder->printContent();
+            //currentFolder->printContent();
         }break;
         case 9:{
         }break;
         case 10:{
         }break;
-        case 11:{
+        case 11:{//ls
+            if(value.empty()){
+                currentFolder->printContent();
+            } /*else{
+                //cout << "file does not exist" << endl;
+            }*/
         }break;
         case 12:{
         }break;
@@ -227,8 +237,13 @@ void Instruction::execCommand(Folder* currentFolder, bool *bandera) {
                 *bandera = true;
             //cout << bandera;
         }break;
+        case 14:{
+
+        }break;
         default :{
             cout << "Default" << endl;
         }
     }
+
+    return currentFolder;
 }
