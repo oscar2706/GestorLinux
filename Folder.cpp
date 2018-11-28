@@ -102,6 +102,7 @@ void Folder::printContent() {
 void Folder::setOwnerPermissions(const string &ownerName, bool canRead, bool canWrite, bool canExecute) {
     ownerPermissions.setName(ownerName);
     ownerPermissions.setPermissions(canRead, canWrite, canExecute);
+    //ownerPermissions.printPermission();
     for (itrFolder = subFolders.begin();  itrFolder != subFolders.end(); ++itrFolder) {
         if((*itrFolder)->subFolders.empty() == false){
             (*itrFolder)->setOwnerPermissions(ownerName, canRead, canWrite, canExecute);
@@ -109,12 +110,22 @@ void Folder::setOwnerPermissions(const string &ownerName, bool canRead, bool can
             (*itrFolder)->ownerPermissions.setName(ownerName);
             (*itrFolder)->ownerPermissions.setPermissions(canRead, canWrite, canExecute);
         }
-
     }
 }
 
 void Folder::setGroupPermissions(const string &groupName, bool canRead, bool canWrite, bool canExecute) {
     groupPermissions.setName(groupName);
+    groupPermissions.setPermissions(canRead, canWrite, canExecute);
+    //groupPermissions.printPermission();
+    for (itrFolder = subFolders.begin();  itrFolder != subFolders.end(); ++itrFolder) {
+        if((*itrFolder)->subFolders.empty() == false){
+            (*itrFolder)->setGroupPermissions(groupName, canRead, canWrite, canExecute);
+        } else{
+            (*itrFolder)->groupPermissions.setName(groupName);
+            (*itrFolder)->groupPermissions.setPermissions(canRead, canWrite, canExecute);
+        }
+    }
+    /*groupPermissions.setName(groupName);
     groupPermissions.setPermissions(canRead, canWrite, canExecute);
     /*
      TODO Hacer los cambios para todos los archivos y subcarpetas(con sus resperctivos archivos)
@@ -123,6 +134,15 @@ void Folder::setGroupPermissions(const string &groupName, bool canRead, bool can
 
 void Folder::setOthersPermissions(bool canRead, bool canWrite, bool canExecute) {
     othersPermissions.setPermissions(canRead, canWrite, canExecute);
+    //othersPermissions.printPermission();
+    for (itrFolder = subFolders.begin();  itrFolder != subFolders.end(); ++itrFolder) {
+        if((*itrFolder)->subFolders.empty() == false){
+            (*itrFolder)->setOthersPermissions(canRead, canWrite, canExecute);
+        } else{
+            (*itrFolder)->othersPermissions.setPermissions(canRead, canWrite, canExecute);
+        }
+    }
+    //othersPermissions.setPermissions(canRead, canWrite, canExecute);
     /*
      TODO Hacer los cambios para todos los archivos y subcarpetas(con sus resperctivos archivos)
      */

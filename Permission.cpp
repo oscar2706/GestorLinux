@@ -23,7 +23,7 @@ void Permission::setName(const string &_name) {
 }
 
 void Permission::setPermissions(bool canRead, bool canWrite, bool canExecute) {
-    read = canExecute;
+    read = canRead;
     write = canWrite;
     execute = canExecute;
 }

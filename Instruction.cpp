@@ -193,9 +193,7 @@ Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera, list <Us
                 char espacio = ' ';
                 string fName;
                 string permissions;
-                File *fileToModify;
-                Folder *folderToModify;
-                bool lectura, escritura, ejecucion;
+                bool ownerW, ownerR, ownerE, groupW, groupR, groupE, othersW, othersR, othersE;
 
                 int posIntermedia = 0;
                 for (int i = 0; i <value.size() ; ++i) {
@@ -211,29 +209,60 @@ Folder * Instruction::execCommand(Folder* currentFolder, bool *bandera, list <Us
                 if(permissions.empty() || fName.empty())
                     cout << "Incomplete command" << endl;
                 else{
-                    if(permissions.size()!=3) {
+                    if(permissions.size()!=9) {
                         cout << "Incorrect permission values" << endl;
                     } else {
                         if(currentFolder->alreadyExistFolder(fName) || currentFolder->alreadyExistFile(fName)) {
-                            //cout << permissions.at(0) << "/" << permissions.at(1) << "/" << permissions.at(2) << endl;
                             if(currentFolder->alreadyExistFile(fName)) {
-                                fileToModify = currentFolder->returnFile(fName);
-
-                                if((permissions.at(0) == '1' || permissions.at(0) == '0')&&(permissions.at(1) == '1' || permissions.at(1) == '0')&&(permissions.at(2) == '1' || permissions.at(2) == '0')) {
-                                    lectura = permissions.at(0) == '1';
-                                    escritura = permissions.at(1) == '1';
-                                    ejecucion = permissions.at(2) == '1';
-                                    fileToModify->setOwnerPermissions(currentUser->getUserName(), lectura, escritura, ejecucion);
+                                if((permissions.at(0) == '1' || permissions.at(0) == '0')
+                                 &&(permissions.at(1) == '1' || permissions.at(1) == '0')
+                                 &&(permissions.at(2) == '1' || permissions.at(2) == '0')
+                                 &&(permissions.at(3) == '1' || permissions.at(3) == '0')
+                                 &&(permissions.at(4) == '1' || permissions.at(4) == '0')
+                                 &&(permissions.at(5) == '1' || permissions.at(5) == '0')
+                                 &&(permissions.at(6) == '1' || permissions.at(6) == '0')
+                                 &&(permissions.at(7) == '1' || permissions.at(7) == '0')
+                                 &&(permissions.at(8) == '1' || permissions.at(8) == '0')) {
+                                    ownerW = permissions.at(0) == '1';
+                                    ownerR = permissions.at(1) == '1';
+                                    ownerE = permissions.at(2) == '1';
+                                    groupW = permissions.at(3) == '1';
+                                    groupR = permissions.at(4) == '1';
+                                    groupE = permissions.at(5) == '1';
+                                    othersW = permissions.at(6) == '1';
+                                    othersR = permissions.at(7) == '1';
+                                    othersE = permissions.at(8) == '1';
+                                    (currentFolder->returnFile(fName))->setOwnerPermissions(currentUser->getUserName(), ownerW, ownerR, ownerE);
+                                    (currentFolder->returnFile(fName))->setGroupPermissions(currentUser->getUserName(), groupW, groupR, groupE);
+                                    (currentFolder->returnFile(fName))->setOthersPermissions(othersW, othersR, othersE);
                                 }
                             } else {
-                                //folderToModify = currentFolder->returnSubFolder(fName);
-
-                                if((permissions.at(0) == '1' || permissions.at(0) == '0')&&(permissions.at(1) == '1' || permissions.at(1) == '0')&&(permissions.at(2) == '1' || permissions.at(2) == '0')) {
-                                    lectura = permissions.at(0) == '1';
-                                    escritura = permissions.at(1) == '1';
-                                    ejecucion = permissions.at(2) == '1';
-                                    cout << lectura << " " << escritura << " " << ejecucion << endl;
-                                    (currentFolder->returnSubFolder(fName))->setOwnerPermissions(currentUser->getUserName(), lectura, escritura, ejecucion);
+                                if(currentFolder->alreadyExistFolder(fName)) {
+                                    if ((permissions.at(0) == '1' || permissions.at(0) == '0')
+                                        && (permissions.at(1) == '1' || permissions.at(1) == '0')
+                                        && (permissions.at(2) == '1' || permissions.at(2) == '0')
+                                        && (permissions.at(3) == '1' || permissions.at(3) == '0')
+                                        && (permissions.at(4) == '1' || permissions.at(4) == '0')
+                                        && (permissions.at(5) == '1' || permissions.at(5) == '0')
+                                        && (permissions.at(6) == '1' || permissions.at(6) == '0')
+                                        && (permissions.at(7) == '1' || permissions.at(7) == '0')
+                                        && (permissions.at(8) == '1' || permissions.at(8) == '0')) {
+                                        ownerW = permissions.at(0) == '1';
+                                        ownerR = permissions.at(1) == '1';
+                                        ownerE = permissions.at(2) == '1';
+                                        groupW = permissions.at(3) == '1';
+                                        groupR = permissions.at(4) == '1';
+                                        groupE = permissions.at(5) == '1';
+                                        othersW = permissions.at(6) == '1';
+                                        othersR = permissions.at(7) == '1';
+                                        othersE = permissions.at(8) == '1';
+                                        (currentFolder->returnSubFolder(fName))->setOwnerPermissions(
+                                                currentUser->getUserName(), ownerW, ownerR, ownerE);
+                                        (currentFolder->returnSubFolder(fName))->setGroupPermissions(
+                                                currentUser->getUserName(), groupW, groupR, groupE);
+                                        (currentFolder->returnSubFolder(fName))->setOthersPermissions(othersW, othersR,
+                                                                                                      othersE);
+                                    }
                                 }
                             }
                         }

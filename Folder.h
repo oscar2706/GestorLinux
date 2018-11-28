@@ -55,7 +55,6 @@ public:
     void getTraverse();
     Folder* findFolder(const string &_folderName);
     void setOwnerPermissions(const string &ownerName, bool canRead, bool canWrite, bool canExecute);
-    void modifyOwnerPermissions(const string &ownerName);
     void setGroupPermissions(const string &groupName, bool canRead, bool canWrite, bool canExecute);
     void setOthersPermissions(bool canRead, bool canWrite, bool canExecute);
 };
